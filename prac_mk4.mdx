@@ -7,6 +7,10 @@ author: "Weonhyeok Chung"
 
 tags: ["#Practice"]
 date: 2022-04-11
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js? 
+config=TeX-MML-AM_CHTML"
+</script>
 ---
 
 ## 시작하며 
@@ -41,7 +45,12 @@ Under <img src="https://render.githubusercontent.com/render/math?math={H_0, E[\b
 Under <img src="https://render.githubusercontent.com/render/math?math={H_1, E[\bar{Y_1}-\bar{Y_0}] = \mu_1 - \mu_0 =\delta}" alt="drawing" height="20"/>
 
 파이썬 코드블록입니다 
-%0A%24%24%0AH_0%20%3A%20%5Cmu_0%20%3D%20%5Cmu_1%0A%24%24%0A%24%24%0AH_1%20%3A%20%5Cmu_0%20%5Cne%20%5Cmu_1%0A%24%24%0ALet%0A%24%24%0AE%5B%5Cbar%7BY_1%7D-%5Cbar%7BY_0%7D%5D%20%3D%20%5Cmu_1%20-%20%5Cmu_0%0A%24%24%0AThen%2C%0A%24%24%0A%5Cfrac%7B%20%5Cbar%7BY_1%7D-%5Cbar%7BY_0%7D%20-%20E%5B%5Cbar%7BY_1%7D-%5Cbar%7BY_0%7D%5D%20%7D%7B%20std%28%5Cbar%7BY_1%7D-%5Cbar%7BY_0%7D%20%29%20%7D%20%3D%20%5Cfrac%7B%20%5Cbar%7BY_1%7D-%5Cbar%7BY_0%7D%20-%20%28%5Cmu_1%20-%20%5Cmu_0%29%20%7D%7B%20std%28%5Cbar%7BY_1%7D-%5Cbar%7BY_0%7D%20%29%20%7D%20%0A%24%24%0A%0ANote%20that%20%24%20E%5B%5Cbar%7BY_1%7D-%5Cbar%7BY_0%7D%5D%20%3D%20%5Cmu_1%20-%20%5Cmu_0%20%24.%20Under%20%24H_0%24%2C%20%24E%5B%5Cbar%7BY_1%7D-%5Cbar%7BY_0%7D%5D%20%3D%20%5Cmu_1%20-%20%5Cmu_0%20%3D0%24%2C%20under%20%24H_1%24%2C%20%24E%5B%5Cbar%7BY_1%7D-%5Cbar%7BY_0%7D%5D%20%3D%20%5Cmu_1%20-%20%5Cmu_0%20%3D%20%5Cdelta%24%0A%0A%24%24%0AVar%28%5Cbar%7BY_1%7D-%5Cbar%7BY_0%7D%29%20%3D%20Var%28%5Cbar%7BY_1%7D%29%2BVar%28%5Cbar%7BY_0%7D%29%20%3D%20%5Cfrac%7BVar%28Y_1%29%7D%7Bn_1%7D%20%2B%20%5Cfrac%7BVar%28Y_0%29%7D%7Bn_0%7D%20%3D%20%5Cfrac%7B%5Csigma%5E2_1%7D%7Bn_1%7D%2B%5Cfrac%7B%5Csigma%5E2_0%7D%7Bn_0%7D%20%0A%24%24%0A%0AUnder%20%24H_0%24%2C%20%0A%24%24%0A%5Cfrac%7B%5Cbar%7BY_1%7D-%5Cbar%7BY_0%7D%20%7D%7Bstd%28%5Cbar%7BY_1%7D-%5Cbar%7BY_0%7D%20%29%7D%20%3D%20%5Cfrac%7B%5Cbar%7BY_1%7D-%5Cbar%7BY_0%7D%20%7D%7B%20%5Csqrt%7B%20%5Cfrac%7B%5Csigma%5E2_1%7D%7Bn_1%7D%2B%5Cfrac%7B%5Csigma%5E2_0%7D%7Bn_0%7D%20%20%7D%20%7D%20%20%3D%20t_%7B%5Cfrac%7B%5Calpha%7D%7B2%7D%7D%0A%24%24%0A%24%24%0A%09%5CRightarrow%20%5Cbar%7BY_1%7D-%5Cbar%7BY_0%7D%3D%20%20t_%7B%5Cfrac%7B%5Calpha%7D%7B2%7D%7D%20%5Ctimes%20%5Csqrt%7B%20%5Cfrac%7B%5Csigma%5E2_1%7D%7Bn_1%7D%2B%5Cfrac%7B%5Csigma%5E2_0%7D%7Bn_0%7D%20%7D%0A%24%24%0A%0AUnder%20%24H_1%24%2C%20%0A%24%24%0A%5Cfrac%7B%5Cbar%7BY_1%7D-%5Cbar%7BY_0%7D%20-%20%5Cdelta%20%7D%7B%20%5Csqrt%7B%20%5Cfrac%7B%5Csigma%5E2_1%7D%7Bn_1%7D%2B%5Cfrac%7B%5Csigma%5E2_0%7D%7Bn_0%7D%20%20%7D%20%7D%20%20%3D%20t_%7B%5Cbeta%7D%0A%24%24%0A%24%24%0A%09%5CRightarrow%20%5Cbar%7BY_1%7D-%5Cbar%7BY_0%7D%3D%20%20%5Cdelta%20-%20t_%7B%5Cbeta%7D%20%5Ctimes%20%5Csqrt%7B%20%5Cfrac%7B%5Csigma%5E2_1%7D%7Bn_1%7D%2B%5Cfrac%7B%5Csigma%5E2_0%7D%7Bn_0%7D%20%7D%0A%24%24%0A%0A%0AThen%2C%20%0A%24%24%0A%5Cdelta%20%3D%20%28%20t_%7B%5Cfrac%7B%5Calpha%7D%7B2%7D%7D%20%2B%20t_%7B%5Cbeta%7D%20%29%20%5Ctimes%20%5Csqrt%7B%20%5Cfrac%7B%5Csigma%5E2_1%7D%7Bn_1%7D%2B%5Cfrac%7B%5Csigma%5E2_0%7D%7Bn_0%7D%20%7D%20%0A%24%24%0A%0AFurther%20assume%20that%20%24%5Csigma_0%5E2%20%3D%20%5Csigma_1%5E2%20%3D%20%5Csigma%5E2%24%2C%20and%20%24n_0%20%3D%20n_1%20%3D%20n%24%2C%20%0A%0A%24%24%0A%09n_0%5E%2A%20%3D%20n_1%5E%2A%20%3D%20n%5E%2A%20%3D%202%20%28%20t_%7B%20%5Cfrac%7B%5Calpha%7D%7B2%7D%7D%20%2B%20t_%5Cbeta%20%29%5E2%20%5CBig%28%20%5Cfrac%7B%5Csigma%7D%7B%5Cdelta%7D%20%5CBig%29%5E2%0A%24%24%0A
+
+$$
+H_0 : \mu_0-\mu_1 = 0
+$$
+
+
 ```python
 import math
 
