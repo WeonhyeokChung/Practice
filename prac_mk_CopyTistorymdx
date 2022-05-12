@@ -1,0 +1,61 @@
+---
+title: 제목
+slug: what-is-slug
+category: Notice
+keywords: practice, hellow
+author: "Weonhyeok Chung"
+
+tags: ["#Practice"]
+date: 2022-04-11
+---
+
+## 시작하며 
+AB 테스팅 스터디 리드를 준비하면서 sample size 계산에 대한 내용을 보다 명확히 이해해야겠다는 생각이 들었다. 책의 Ch02 에서 샘플 사이즈를 계산하기 위해서는 baseline 의 평균과 표준편차를 알아야 한다는 내용이 나온다.
+
+수식이 많은데, 이를 공부하는 이유는 자동차를 운전할 때 부품도 알아두면 도움이 되는 경우랑 비슷한 것 같다. 일상생활에서 사실 굳이 자동차의 세부적인 부품까지 알아야할 필요는 없다 (정비소에 맞기면 되니까). 그런데, 정비소에 가기 어렵거나 간단간단하게 자주 갈아야하는 엔진 오일 같은 경우에는 관련 구조를 간단히 알아두면 스스로 정비를 할 수도 있다. 데이터 분석에서, 예를 들어 실험에서 샘플 사이즈 계산에서도 이러한 수리 통계적인 지식들은 자동차의 세세한 구조를 이해하는 것과 유사한 것 같다 (굳이 자주 안 쓰는 부품까지 이해할 필요는 없지만, 샘플 사이즈는 많이 사용하는 내용이고 관련 지식도 고등학교 확률통계 내용 + 가설검정의 지식이면 이해가 가능한 것 같다).
+
+\[ \] 수식 들어가기 전에 왜 이러한 수식이 나왔는지에 대한 내용
+
+$$ H\_0 : \\mu\_0 = \\mu\_1 $$ $$ H\_1 : \\mu\_0 \\ne \\mu\_1 $$ Let $$ E\[\\bar{Y\_1}-\\bar{Y\_0}\] = \\mu\_1 - \\mu\_0 $$ Then, $$ \\frac{ \\bar{Y\_1}-\\bar{Y\_0} - E\[\\bar{Y\_1}-\\bar{Y\_0}\] }{ std(\\bar{Y\_1}-\\bar{Y\_0} ) } = \\frac{ \\bar{Y\_1}-\\bar{Y\_0} - (\\mu\_1 - \\mu\_0) }{ std(\\bar{Y\_1}-\\bar{Y\_0} ) } $$ Note that $ E\[\\bar{Y\_1}-\\bar{Y\_0}\] = \\mu\_1 - \\mu\_0 $. Under $H\_0$, $E\[\\bar{Y\_1}-\\bar{Y\_0}\] = \\mu\_1 - \\mu\_0 =0$, under $H\_1$, $E\[\\bar{Y\_1}-\\bar{Y\_0}\] = \\mu\_1 - \\mu\_0 = \\delta$ $$ Var(\\bar{Y\_1}-\\bar{Y\_0}) = Var(\\bar{Y\_1})+Var(\\bar{Y\_0}) = \\frac{Var(Y\_1)}{n\_1} + \\frac{Var(Y\_0)}{n\_0} = \\frac{\\sigma^2\_1}{n\_1}+\\frac{\\sigma^2\_0}{n\_0} $$ Under $H\_0$, $$ \\frac{\\bar{Y\_1}-\\bar{Y\_0} }{std(\\bar{Y\_1}-\\bar{Y\_0} )} = \\frac{\\bar{Y\_1}-\\bar{Y\_0} }{ \\sqrt{ \\frac{\\sigma^2\_1}{n\_1}+\\frac{\\sigma^2\_0}{n\_0} } } = t\_{\\frac{\\alpha}{2}} $$ $$ \\Rightarrow \\bar{Y\_1}-\\bar{Y\_0}= t\_{\\frac{\\alpha}{2}} \\times \\sqrt{ \\frac{\\sigma^2\_1}{n\_1}+\\frac{\\sigma^2\_0}{n\_0} } $$ Under $H\_1$, $$ \\frac{\\bar{Y\_1}-\\bar{Y\_0} - \\delta }{ \\sqrt{ \\frac{\\sigma^2\_1}{n\_1}+\\frac{\\sigma^2\_0}{n\_0} } } = t\_{\\beta} $$ $$ \\Rightarrow \\bar{Y\_1}-\\bar{Y\_0}= \\delta - t\_{\\beta} \\times \\sqrt{ \\frac{\\sigma^2\_1}{n\_1}+\\frac{\\sigma^2\_0}{n\_0} } $$ Then, $$ \\delta = ( t\_{\\frac{\\alpha}{2}} + t\_{\\beta} ) \\times \\sqrt{ \\frac{\\sigma^2\_1}{n\_1}+\\frac{\\sigma^2\_0}{n\_0} } $$ Further assume that $\\sigma\_0^2 = \\sigma\_1^2 = \\sigma^2$, and $n\_0 = n\_1 = n$, $$ n\_0^\* = n\_1^\* = n^\* = 2 ( t\_{ \\frac{\\alpha}{2}} + t\_\\beta )^2 \\Big( \\frac{\\sigma}{\\delta} \\Big)^2 $$
+
+\[ \] continuous 한 경우의 예시
+
+\[ \] 코드 + ipython 
+
+$$ H\_0: p\_0 = p\_1 $$ $$ H\_1: p\_0 \\ne p\_1 $$ Note that the variance is $p(1-p)$. Under $H\_0$, $$ \\frac{ \\hat{p\_0} - \\hat{p\_1} - 0 }{ \\sqrt{ \\frac{ \\bar{p} (1-\\bar{p}) }{ n\_0 } + \\frac{ \\bar{p} (1-\\bar{p}) }{ n\_1 } } } = t\_{\\frac{\\alpha}{2}} $$ Under $H\_1$, $$ \\frac{ \\hat{p\_0} - \\hat{p\_1} - \\delta }{ \\sqrt{ \\frac{ p\_0 (1- p\_0) }{ n\_0 } + \\frac{ p\_1 (1- p\_1) }{ n\_1 } } } = -t\_{\\beta} $$ Further assume $n\_0=n\_1=n$. From the two equations, $$ t\_{\\frac{\\alpha}{2}} \\times \\sqrt{ \\frac{ 2 \\bar{p}(1-\\bar{p} }{n} } = \\delta - t\_{\\beta} \\sqrt{ \\frac{ p\_0 (1-p\_0) + p\_1 (1-p\_1) }{n} } $$ $$ n = \\Big( t\_{\\frac{\\alpha}{2}} \\sqrt{ 2 \\bar{p} (1-\\bar{p})} + t\_\\beta \\sqrt{ p\_0 (1-p\_0) + p\_1 (1-p\_1) } \\Big)^2 \\delta^{-2} $$
+
+```
+import math
+
+p0 = 0.05
+mde = 0.10
+p1 = p0*(1+mde)
+pbar = (p0+p1)/2
+
+alpha=0.95
+beta=0.8
+t_alpha2=1.96
+t_beta = 0.84
+delta = p1-p0
+
+n=(t_alpha2*math.sqrt(2*pbar*(1-pbar))+t_beta*math.sqrt(p0*(1-p0)+p1*(1-p1)))**2*(1/delta)**2
+n
+```
+
+[ipython 링크](https://colab.research.google.com/drive/1q1vbsst8WsKir8X44r50UqHlnhNdbfoP#scrollTo=F-U4mccBjARj)에 위 코드를 실행해볼 수 있게 해두었다. [Optimizely 의 결과](https://www.optimizely.com/sample-size-calculator/?conversion=5&effect=10&significance=95)와 거의 유사하게 나온다. t 들을 n 이 매우 클 때의 z 값으로 고정시켜 두어서 오차가 생기는 것 같다. 
+
+\[ \] Type I error vs. Type II error
+
+cf. 추후 더 공부해볼 내용
+
+\[ \] Type I error vs. Type II error
+
+\[ \] Multiple Hypothesis Testing
+
+<script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} });</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"></script>
+
+ipython 예시 [Link to ipython](https://colab.research.google.com/drive/1qT0e9EXCBFSpW-OrWFinArA60MEFAMYV#scrollTo=qDvzgkV-MSrx)
+
+
+## 작성자 등록
+우선 글 작성해주실 분들에 대한 정보를 등록해야 합니다. 작성자를 등록하기 위해 필요한 값은 다음과 같습니다.
