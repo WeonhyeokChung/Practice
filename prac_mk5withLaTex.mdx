@@ -1,0 +1,161 @@
+---
+title: 제목
+slug: what-is-slug
+category: Notice
+keywords: practice, hellow
+author: "Weonhyeok Chung"
+
+tags: ["#Practice"]
+date: 2022-04-11
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js? 
+config=TeX-MML-AM_CHTML"
+</script>
+---
+
+## 시작하며 
+
+이번 문단에서는 LaTex 과 python 을 연습해봅니다. 글 작성 중에 LaTex <img src="https://render.githubusercontent.com/render/math?math={1-\beta}"> 이 되는지 해보자.
+<img src="https://render.githubusercontent.com/render/math?math={x + y}" height="30"/>
+
+
+Type I error: Reject null when the true state is null. 
+
+Type II error: Not reject null when the true state is altenative. 
+
+Two hypothesis:
+<p align="center">
+    <img src="https://render.githubusercontent.com/render/math?math={H_0 : \mu_0 = \mu_1}" alt="drawing" height="30"/>
+</p>
+<p align="center">
+    <img src="https://render.githubusercontent.com/render/math?math={H_1 : \mu_0 \ne \mu_1}" alt="drawing" height="30"/>
+</p>
+Let
+<p align="center">   
+    <img src="https://render.githubusercontent.com/render/math?math={E[\bar{Y_1}-\bar{Y_0}] = \mu_1 - \mu_0}" alt="drawing" height="30"/>
+</p>
+Then,
+<p align="center">       
+    <img src="https://render.githubusercontent.com/render/math?math={\frac{ \bar{Y_1}-\bar{Y_0} - E[\bar{Y_1}-\bar{Y_0}] }{ std(\bar{Y_1}-\bar{Y_0} ) } = \frac{ \bar{Y_1}-\bar{Y_0} - (\mu_1 - \mu_0) }{ std(\bar{Y_1}-\bar{Y_0} ) } }" alt="drawing" height="60"/>
+</p>
+
+
+Note that <img src="https://render.githubusercontent.com/render/math?math={E[\bar{Y_1}-\bar{Y_0}] = \mu_1 - \mu_0}" alt="drawing" height="20"/>. 
+Under <img src="https://render.githubusercontent.com/render/math?math={H_0, E[\bar{Y_1}-\bar{Y_0}] = \mu_1 - \mu_0 =0}" alt="drawing" height="20"/>, and 
+Under <img src="https://render.githubusercontent.com/render/math?math={H_1, E[\bar{Y_1}-\bar{Y_0}] = \mu_1 - \mu_0 =\delta}" alt="drawing" height="20"/>
+
+파이썬 코드블록입니다 
+
+
+$$
+H_0 : \mu_0 = \mu_1
+$$
+$$
+H_1 : \mu_0 \ne \mu_1
+$$
+Let
+$$
+E[\bar{Y_1}-\bar{Y_0}] = \mu_1 - \mu_0
+$$
+Then,
+$$
+\frac{ \bar{Y_1}-\bar{Y_0} - E[\bar{Y_1}-\bar{Y_0}] }{ std(\bar{Y_1}-\bar{Y_0} ) } = \frac{ \bar{Y_1}-\bar{Y_0} - (\mu_1 - \mu_0) }{ std(\bar{Y_1}-\bar{Y_0} ) } 
+$$
+
+Note that $ E[\bar{Y_1}-\bar{Y_0}] = \mu_1 - \mu_0 $. Under $H_0$, $E[\bar{Y_1}-\bar{Y_0}] = \mu_1 - \mu_0 =0$, under $H_1$, $E[\bar{Y_1}-\bar{Y_0}] = \mu_1 - \mu_0 = \delta$
+
+$$
+Var(\bar{Y_1}-\bar{Y_0}) = Var(\bar{Y_1})+Var(\bar{Y_0}) = \frac{Var(Y_1)}{n_1} + \frac{Var(Y_0)}{n_0} = \frac{\sigma^2_1}{n_1}+\frac{\sigma^2_0}{n_0} 
+$$
+
+Under $H_0$, 
+$$
+\frac{\bar{Y_1}-\bar{Y_0} }{std(\bar{Y_1}-\bar{Y_0} )} = \frac{\bar{Y_1}-\bar{Y_0} }{ \sqrt{ \frac{\sigma^2_1}{n_1}+\frac{\sigma^2_0}{n_0}  } }  = t_{\frac{\alpha}{2}}
+$$
+$$
+	\Rightarrow \bar{Y_1}-\bar{Y_0}=  t_{\frac{\alpha}{2}} \times \sqrt{ \frac{\sigma^2_1}{n_1}+\frac{\sigma^2_0}{n_0} }
+$$
+
+Under $H_1$, 
+$$
+\frac{\bar{Y_1}-\bar{Y_0} - \delta }{ \sqrt{ \frac{\sigma^2_1}{n_1}+\frac{\sigma^2_0}{n_0}  } }  = t_{\beta}
+$$
+$$
+	\Rightarrow \bar{Y_1}-\bar{Y_0}=  \delta - t_{\beta} \times \sqrt{ \frac{\sigma^2_1}{n_1}+\frac{\sigma^2_0}{n_0} }
+$$
+
+
+Then, 
+$$
+\delta = ( t_{\frac{\alpha}{2}} + t_{\beta} ) \times \sqrt{ \frac{\sigma^2_1}{n_1}+\frac{\sigma^2_0}{n_0} } 
+$$
+
+Further assume that $\sigma_0^2 = \sigma_1^2 = \sigma^2$, and $n_0 = n_1 = n$, 
+
+$$
+	n_0^* = n_1^* = n^* = 2 ( t_{ \frac{\alpha}{2}} + t_\beta )^2 \Big( \frac{\sigma}{\delta} \Big)^2
+$$
+
+
+그리고, 비율인 경우
+
+
+$$
+H_0: p_0 = p_1
+$$
+$$
+H_1: p_0 \ne p_1
+$$
+
+Note that the variance is $p(1-p)$. 
+
+Under $H_0$,
+
+$$
+\frac{ \hat{p_0} - \hat{p_1} - 0 }{ \sqrt{ \frac{ \bar{p} (1-\bar{p}) }{ n_0 } + \frac{ \bar{p} (1-\bar{p}) }{ n_1 } }  } = t_{\frac{\alpha}{2}}
+$$
+
+
+Under $H_1$,
+$$
+\frac{ \hat{p_0} - \hat{p_1} - \delta }{ \sqrt{ \frac{ p_0 (1- p_0) }{ n_0 } + \frac{ p_1 (1- p_1) }{ n_1 } }  } = -t_{\beta}
+$$
+
+Further assume $n_0=n_1=n$. From the two equations, 
+
+$$
+t_{\frac{\alpha}{2}} \times \sqrt{ \frac{ 2 \bar{p}(1-\bar{p} }{n} } = \delta - t_{\beta} \sqrt{ \frac{ p_0 (1-p_0) + p_1 (1-p_1) }{n} }
+$$
+
+$$
+n = \Big( t_{\frac{\alpha}{2}} \sqrt{ 2 \bar{p} (1-\bar{p})} + t_\beta \sqrt{ p_0 (1-p_0) + p_1 (1-p_1) }    \Big)^2 \delta^{-2}
+$$
+
+
+
+
+```python
+import math
+
+p0 = 0.05
+mde = 0.10
+p1 = p0*(1+mde)
+pbar = (p0+p1)/2
+
+alpha=0.95
+beta=0.8
+t_alpha2=1.96
+t_beta = 0.84
+delta = p1-p0
+```
+
+```
+n=(t_alpha2*math.sqrt(2*pbar*(1-pbar))+t_beta*math.sqrt(p0*(1-p0)+p1*(1-p1)))**2*(1/delta)**2
+n
+```
+
+ipython 예시 [Link to ipython](https://colab.research.google.com/drive/1qT0e9EXCBFSpW-OrWFinArA60MEFAMYV#scrollTo=qDvzgkV-MSrx)
+
+
+## 작성자 등록
+우선 글 작성해주실 분들에 대한 정보를 등록해야 합니다. 작성자를 등록하기 위해 필요한 값은 다음과 같습니다.
