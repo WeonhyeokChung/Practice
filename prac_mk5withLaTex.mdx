@@ -72,20 +72,19 @@ Under $H_0$,
 $$
 \frac{\bar{Y_1}-\bar{Y_0} }{std(\bar{Y_1}-\bar{Y_0} )} = \frac{\bar{Y_1}-\bar{Y_0} }{ \sqrt{ \frac{\sigma^2_1}{n_1}+\frac{\sigma^2_0}{n_0}  } }  = t_{\frac{\alpha}{2}}
 $$
-$$
+\begin{equation}\label{eq:1}
 	\Rightarrow \bar{Y_1}-\bar{Y_0}=  t_{\frac{\alpha}{2}} \times \sqrt{ \frac{\sigma^2_1}{n_1}+\frac{\sigma^2_0}{n_0} }
-$$
+\end{equation}
 
 Under $H_1$, 
 $$
 \frac{\bar{Y_1}-\bar{Y_0} - \delta }{ \sqrt{ \frac{\sigma^2_1}{n_1}+\frac{\sigma^2_0}{n_0}  } }  = t_{\beta}
 $$
-$$
+\begin{equation}\label{eq:2}
 	\Rightarrow \bar{Y_1}-\bar{Y_0}=  \delta - t_{\beta} \times \sqrt{ \frac{\sigma^2_1}{n_1}+\frac{\sigma^2_0}{n_0} }
-$$
+\end{equation}
 
-
-Then, 
+From equation (\ref{eq:1}) and (\ref{eq:2}),
 $$
 \delta = ( t_{\frac{\alpha}{2}} + t_{\beta} ) \times \sqrt{ \frac{\sigma^2_1}{n_1}+\frac{\sigma^2_0}{n_0} } 
 $$
@@ -95,7 +94,6 @@ Further assume that $\sigma_0^2 = \sigma_1^2 = \sigma^2$, and $n_0 = n_1 = n$,
 $$
 	n_0^* = n_1^* = n^* = 2 ( t_{ \frac{\alpha}{2}} + t_\beta )^2 \Big( \frac{\sigma}{\delta} \Big)^2
 $$
-
 
 그리고, 비율인 경우
 
