@@ -143,14 +143,14 @@ n
 
 ## Reference
 
-[Optimizely](https://www.optimizely.com/sample-size-calculator/?conversion=5&effect=10&significance=95)
+- [Optimizely](https://www.optimizely.com/sample-size-calculator/?conversion=5&effect=10&significance=95)
 
-[List et al. 2011, "So you want to run an experiment, now what? Some Simple Rules of Thumb for Optimal Experimental Design" Experimental Economics 의 NBER Working Paper version](https://www.nber.org/papers/w15701)
+- [List et al. 2011, "So you want to run an experiment, now what? Some Simple Rules of Thumb for Optimal Experimental Design" Experimental Economics 의 NBER Working Paper version](https://www.nber.org/papers/w15701)
 
-[Paulynn Yu, Understanding Power Analysis in AB Testing](https://towardsdatascience.com/understanding-power-analysis-in-ab-testing-14808e8a1554)
+- [Paulynn Yu, Understanding Power Analysis in AB Testing](https://towardsdatascience.com/understanding-power-analysis-in-ab-testing-14808e8a1554)
 
-[PAP 오채환님 글, "샘플 사이즈 계산기에 숨어있는 통계 이야기"](https://playinpap.github.io/sample-size-calculator-statistics/)
+- [PAP 오채환님 글, "샘플 사이즈 계산기에 숨어있는 통계 이야기"](https://playinpap.github.io/sample-size-calculator-statistics/)
 
-[Chandar et al. 2019, "Design and Analysis of Cluster-Randomized Field Experiments in Panel Data Settings" NBER Working Paper](https://www.nber.org/system/files/working_papers/w26389/w26389.pdf)
+- [Chandar et al. 2019, "Design and Analysis of Cluster-Randomized Field Experiments in Panel Data Settings" NBER Working Paper](https://www.nber.org/system/files/working_papers/w26389/w26389.pdf)
 
-[Kohavi et al. 2020, "Trustworthy Online Controlled Experiments (A Practical Guide to A/B Testing)"](https://www.amazon.com/Trustworthy-Online-Controlled-Experiments-Practical/dp/1108724264)
+- [Kohavi et al. 2020, "Trustworthy Online Controlled Experiments (A Practical Guide to A/B Testing)"](https://www.amazon.com/Trustworthy-Online-Controlled-Experiments-Practical/dp/1108724264)
