@@ -107,7 +107,7 @@ $$
 n = \Big( t_{\frac{\alpha}{2}} \sqrt{ 2 \bar{p} (1-\bar{p})} + t_\beta \sqrt{ p_0 (1-p_0) + p_1 (1-p_1) }    \Big)^2 \delta^{-2}
 $$
 
-성공률에 대한 샘플사이즈 계산기에서 minimum detectable effect (앞으로 mde 라 하겠습니다) 는 기존 성공률에 대한 상대적인 상승률이라고 Optimizely 문서에서는 정의되어 있습니다 (MDE represents the relative minimal improvement over the baseline). $mde= \frac{p_1}{p_0}-1$
+성공률에 대한 샘플사이즈 계산기에서 minimum detectable effect (앞으로 mde 라 하겠습니다) 는 기존 성공률에 대한 상대적인 상승률이라고 Optimizely 문서에서는 정의되어 있습니다 (MDE represents the relative minimal improvement over the baseline). $mde= \frac{p_1}{p_0}-1$.
 
 ```python
 import math
@@ -137,7 +137,9 @@ n
 
 ## 마무리하며
 
+샘플 사이즈 공식의 추론 과정을 이해하면, 구매전환율과 같은 확률적인 결과 뿐만 아니라, 결과값이 contiuous 한 경우,clustered randomization 과 같은 SUTVA 가 성립하지 않는 상황에서 직접 공식을 찾고 이를 이용해서 최소한의 샘플 사이즈를 엑셀이나 간단한 프로그램을 통해서 구할 수 있습니다. 
 
+위  글은 저의 [개인블로그](https://marvin-ds.tistory.com/15)에서도 읽으실 수 있습니다. 
 
 ## Reference
 
