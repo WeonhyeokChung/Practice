@@ -10,9 +10,12 @@ date: 2022-05-14
 
 
 
+
 ## 시작하며 
 
 AB 테스팅 스터디 리드를 준비하면서 sample size 계산에 대한 수식적인 내용을 보충해야겠다는 생각이 들었습니다. 책의 Ch02 에서 샘플 사이즈를 계산하기 위해서는 baseline 의 평균과 표준편차를 알아야 한다는 내용이 나옵니다.
+
+샘플 사이즈 계산에 필요한 기본적인 통계적인 로직을 이해하면, 다양한 상황에서 적용할 수 있는 장점이 있습니다. 제가 [Optimizely](https://www.optimizely.com/sample-size-calculator/?conversion=5&effect=10&significance=95) 에서 본 계산기는 구매전환율과 같은 확률을 비교하는 상황(outcome 이 0과 1값 사이)에서만 적용되는데, 유저 당 수익과 같은 outcome 이 확률이 아닌 상황에서는 링크의 계산기를 이용하지 못합니다. 샘플 계산기의 수식을 이해한다면, 다양한 상황에서 적용이 가능하겠습니다.
 
 ## 샘플 사이즈 계산 시작하기
 
@@ -37,7 +40,7 @@ $$
 \frac{ \bar{Y_1}-\bar{Y_0} - E[\bar{Y_1}-\bar{Y_0}] }{ std(\bar{Y_1}-\bar{Y_0} ) } = \frac{ \bar{Y_1}-\bar{Y_0} - (\mu_1 - \mu_0) }{ std(\bar{Y_1}-\bar{Y_0} ) } 
 $$
 
-귀무가설 $H_0$에서는, $E[\bar{Y_1}-\bar{Y_0}] = \mu_1 - \mu_0 =0$이고, 대립가설 $H_1$ 에서는, $E[\bar{Y_1}-\bar{Y_0}] = \mu_1 - \mu_0 = \delta$ 이며,
+인데, 귀무가설 $H_0$에서는, $E[\bar{Y_1}-\bar{Y_0}] = \mu_1 - \mu_0 =0$이고, 대립가설 $H_1$ 에서는, $E[\bar{Y_1}-\bar{Y_0}] = \mu_1 - \mu_0 = \delta$ 이며,
 
 $$
 Var(\bar{Y_1}-\bar{Y_0}) = Var(\bar{Y_1})+Var(\bar{Y_0}) = \frac{Var(Y_1)}{n_1} + \frac{Var(Y_0)}{n_0} = \frac{\sigma^2_1}{n_1}+\frac{\sigma^2_0}{n_0} 
@@ -73,9 +76,9 @@ $$
 $$
 입니다. 
 
-## 확률
+## 성공률
 
-이전의 사례와 달리, 구매전환율과 같은 비율의 차이를 구하는 경우에는 조금 다릅니다. 
+이전의 사례와 달리, 구매전환율처럼 성공률의 차이를 구하는 경우에는 조금 다릅니다.
 
 $$
 H_0: p_0 = p_1
@@ -107,6 +110,8 @@ $$
 n = \Big( t_{\frac{\alpha}{2}} \sqrt{ 2 \bar{p} (1-\bar{p})} + t_\beta \sqrt{ p_0 (1-p_0) + p_1 (1-p_1) }    \Big)^2 \delta^{-2}
 $$
 
+성공률에 대한 샘플사이즈 계산기에서 minimum detectable effect (앞으로 mde 라 하겠습니다) 는 기존 성공률에 대한 상대적인 상승률이라고 Optimizely 문서에서는 정의되어 있습니다 (MDE represents the relative minimal improvement over the baseline). $mde= \frac{p_1}{p_0}-1$
+
 ```python
 import math
 
@@ -127,7 +132,11 @@ n=(t_alpha2*math.sqrt(2*pbar*(1-pbar))+t_beta*math.sqrt(p0*(1-p0)+p1*(1-p1)))**2
 n
 ```
 
-[ipython](https://colab.research.google.com/drive/1q1vbsst8WsKir8X44r50UqHlnhNdbfoP#scrollTo=F-U4mccBjARj)에 동일한 식을 적어두었습니다.
+[ipython](https://colab.research.google.com/drive/1q1vbsst8WsKir8X44r50UqHlnhNdbfoP#scrollTo=F-U4mccBjARj)에 동일한 식을 적어두었습니다. [Optimizely](https://www.optimizely.com/sample-size-calculator/?conversion=5&effect=10&significance=95)의 결과와 유사하게 나옵니다. 약간의 오차가 나오는 이유는 제가 t-stat 대신에 z-stat 으로 고정해두어서 그런 게 아닐까 추측합니다. 
+
+## Cluster Randomization 을 한다면? 
+
+무작위 추출에서 SUTVA 가정을 충족하지 못한다면, clustered randomization 의 방법을 생각해볼 수 있습니다. 예를 들어, 게임 유저에게 랜덤하게 아이템을 지급할 때 한 유저의 아이템 장착이 다른 유저에게 영향을 준다면, spillover 가 발생하기 때문에 SUTVA 가정이 충족하지 못합니다. 이럴 때, 서버 단위의 실험을 생각해볼 수 있습니다 (홀수번째 서버는 아이템을 랜덤하게 지급하고 짝수번째 서버는 그렇지 않다는 등...). 이 때, 무작위 추출의 단위가 유저가 아니라 서버와 같은 그룹(클러스터) 단위이기 때문에, 표본의 크기도 달라집니다. List et al. 논문의 섹션 4.2 Cluster Designs 에 추가적인 내용이 있어서 궁금하신 분들은 더 찾아보면 좋을 것 같네요. 
 
 ## 마무리하며
 
@@ -135,7 +144,6 @@ n
 
 위  글은 저의 
 
-## 레퍼런스 
-
+## Reference
 
 
