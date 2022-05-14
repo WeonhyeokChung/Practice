@@ -143,11 +143,11 @@ n
 
 ## Reference
 
-- [Optimizely](https://www.optimizely.com/sample-size-calculator/?conversion=5&effect=10&significance=95)
+- [Optimizely, "A/B test sample size calculator"](https://www.optimizely.com/sample-size-calculator/?conversion=5&effect=10&significance=95)
 
 - [List et al. 2011, "So you want to run an experiment, now what? Some Simple Rules of Thumb for Optimal Experimental Design" Experimental Economics 의 NBER Working Paper version](https://www.nber.org/papers/w15701)
 
-- [Paulynn Yu, Understanding Power Analysis in AB Testing](https://towardsdatascience.com/understanding-power-analysis-in-ab-testing-14808e8a1554)
+- [Paulynn Yu, "Understanding Power Analysis in AB Testing"](https://towardsdatascience.com/understanding-power-analysis-in-ab-testing-14808e8a1554)
 
 - [PAP 오채환님 글, "샘플 사이즈 계산기에 숨어있는 통계 이야기"](https://playinpap.github.io/sample-size-calculator-statistics/)
 
