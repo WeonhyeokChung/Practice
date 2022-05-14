@@ -1,23 +1,20 @@
 ---
-title: 샘플사이즈 계산기의 공식 이해 및 파이썬 적용
+title: 샘플사이즈 계산기의 공식 이해
 slug: sample-size-formula
 category: Experiment
 author: "정원혁"
 
 tags: ["중급"]
-date: 2022-05-14
+date: 2022-05-15
 ---
-
-
-
 
 ## 시작하며 
 
-AB 테스팅 스터디 리드를 준비하면서 sample size 계산에 대한 수식적인 내용을 보충해야겠다는 생각이 들었습니다. 책의 Ch02 에서 샘플 사이즈를 계산하기 위해서는 baseline 의 평균과 표준편차를 알아야 한다는 내용이 나옵니다.
+PAP 내부에서 AB 테스팅 스터디 리드를 준비던 중 sample size 계산에 대한 수식적인 내용을 보충해야겠다는 생각이 들었습니다. 책(Trustworthy Online Controlled Experiments)의 Chapter 02 에 따르면, 샘플 사이즈를 계산하기 위해서는 baseline 의 평균과 표준편차를 알아야 한다는 내용이 나옵니다.
 
-샘플 사이즈 계산에 필요한 기본적인 통계적인 로직을 이해하면, 다양한 상황에서 적용할 수 있는 장점이 있습니다. 제가 [Optimizely](https://www.optimizely.com/sample-size-calculator/?conversion=5&effect=10&significance=95) 에서 본 계산기는 구매전환율과 같은 확률을 비교하는 상황(outcome 이 0과 1값 사이)에서만 적용되는데, 유저 당 수익과 같은 outcome 이 확률이 아닌 상황에서는 링크의 계산기를 이용하지 못합니다. 샘플 계산기의 수식을 이해한다면, 다양한 상황에서 적용이 가능하겠습니다.
+샘플 사이즈 계산에 필요한 기본적인 통계적인 로직을 이해하면, 다양한 상황에서 적용할 수 있는 장점이 있습니다. 제가 [Optimizely](https://www.optimizely.com/sample-size-calculator/?conversion=5&effect=10&significance=95) 에서 본 계산기는 구매전환율과 같은 확률을 비교하는 상황(outcome 이 0과 1값 사이)인데, 유저 당 수익과 같은 outcome 이 확률이 아닌 상황에서는 다른 툴이 필요합니다. 샘플 계산기의 수식을 이해한다면 관련 자료를 찾아서 직접 계산을 해볼 수 있습니다.
 
-## 샘플 사이즈 계산 시작하기
+## 샘플 사이즈 공식 (continuous outcome)
 
 최적의 샘플 사이즈를 구하기 위해서는 귀무가설과 대립가설이 필요합니다. 귀무가설은 처치의 효과가 없다이고, 대립가설은 처치의 효과가 나타나기를 기대하는 최솟값 이상입니다. 최적의 샘플 사이즈를 구하기 위해서는 귀무가설이 참일 때, 이를 잘못 기각하지 않아야 하고 (두 집단 사이에 차이가 없는데, 두 집단 사이에 차이가 있다고 잘못 판단하는 경우), 대립가설이 참일 때, 귀무가설을 잘못 채택해서는 안됩니다 (두 집단 사이에 우리가 기대하는 최솟값이 나타날 때 두 집단 사이에 효과가 없다고 판단하는 경우). 
 
@@ -76,7 +73,7 @@ $$
 $$
 입니다. 
 
-## 성공률
+## 샘플 사이즈 공식 (binary outcome)
 
 이전의 사례와 달리, 구매전환율처럼 성공률의 차이를 구하는 경우에는 조금 다릅니다.
 
@@ -136,14 +133,22 @@ n
 
 ## Cluster Randomization 을 한다면? 
 
-무작위 추출에서 SUTVA 가정을 충족하지 못한다면, clustered randomization 의 방법을 생각해볼 수 있습니다. 예를 들어, 게임 유저에게 랜덤하게 아이템을 지급할 때 한 유저의 아이템 장착이 다른 유저에게 영향을 준다면, spillover 가 발생하기 때문에 SUTVA 가정이 충족하지 못합니다. 이럴 때, 서버 단위의 실험을 생각해볼 수 있습니다 (홀수번째 서버는 아이템을 랜덤하게 지급하고 짝수번째 서버는 그렇지 않다는 등...). 이 때, 무작위 추출의 단위가 유저가 아니라 서버와 같은 그룹(클러스터) 단위이기 때문에, 표본의 크기도 달라집니다. List et al. 논문의 섹션 4.2 Cluster Designs 에 추가적인 내용이 있어서 궁금하신 분들은 더 찾아보면 좋을 것 같네요. 
+무작위 추출에서 SUTVA(Stable Unit Treatment Value Assumption) 가정을 충족하지 못하는 경우에는 clustered randomization 의 방법을 생각해볼 수 있습니다. 예를 들어, 게임 유저에게 랜덤하게 아이템을 지급할 때 한 유저의 아이템 장착이 다른 유저에게 영향을 준다면, spillover 가 발생하기 때문에 SUTVA 가정이 충족하지 못합니다. 이럴 때, 서버 단위의 실험을 생각해볼 수 있습니다 (홀수번째 서버는 아이템을 랜덤하게 지급하고 짝수번째 서버는 그렇지 않다는 등등). 이 때, 무작위 추출의 단위가 유저가 아니라 서버와 같은 그룹(클러스터) 단위이기 때문에, 표본의 크기도 달라집니다. List et al. (2011) 논문의 섹션 4.2 Cluster Designs 에 추가적인 내용이 있어서 궁금하신 분들은 더 찾아보면 좋을 것 같네요. 
 
 ## 마무리하며
 
-한 문장으로 요약하면, 
 
-위  글은 저의 
 
 ## Reference
 
+[Optimizely](https://www.optimizely.com/sample-size-calculator/?conversion=5&effect=10&significance=95)
 
+[List et al. 2011, "So you want to run an experiment, now what? Some Simple Rules of Thumb for Optimal Experimental Design" Experimental Economics 의 NBER Working Paper version](https://www.nber.org/papers/w15701)
+
+[Paulynn Yu, Understanding Power Analysis in AB Testing](https://towardsdatascience.com/understanding-power-analysis-in-ab-testing-14808e8a1554)
+
+[PAP 오채환님 글, "샘플 사이즈 계산기에 숨어있는 통계 이야기"](https://playinpap.github.io/sample-size-calculator-statistics/)
+
+[Chandar et al. 2019, "Design and Analysis of Cluster-Randomized Field Experiments in Panel Data Settings" NBER Working Paper](https://www.nber.org/system/files/working_papers/w26389/w26389.pdf)
+
+[Kohavi et al. 2020, "Trustworthy Online Controlled Experiments (A Practical Guide to A/B Testing)"](https://www.amazon.com/Trustworthy-Online-Controlled-Experiments-Practical/dp/1108724264)
