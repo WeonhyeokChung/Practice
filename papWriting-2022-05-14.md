@@ -133,7 +133,7 @@ n
 
 ## Cluster Randomization 을 한다면? 
 
-무작위 추출에서 SUTVA(Stable Unit Treatment Value Assumption) 가정을 충족하지 못하는 경우에는 clustered randomization 의 방법을 생각해볼 수 있습니다. 예를 들어, 게임 유저에게 랜덤하게 아이템을 지급할 때 한 유저의 아이템 장착이 다른 유저에게 영향을 준다면, spillover 가 발생하기 때문에 SUTVA 가정이 충족하지 못합니다. 이럴 때, 서버 단위의 실험을 생각해볼 수 있습니다 (홀수번째 서버는 아이템을 랜덤하게 지급하고 짝수번째 서버는 그렇지 않다는 등등). 이 때, 무작위 추출의 단위가 유저가 아니라 서버와 같은 그룹(클러스터) 단위이기 때문에, 표본의 크기도 달라집니다. L[List et al. 2011](https://www.nber.org/papers/w15701) 논문의 섹션 4.2 Cluster Designs 에 추가적인 내용이 있어서 궁금하신 분들은 더 찾아보면 좋을 것 같네요. 
+무작위 추출에서 SUTVA(Stable Unit Treatment Value Assumption) 가정을 충족하지 못하는 경우에는 clustered randomization 의 방법을 생각해볼 수 있습니다. 예를 들어, 게임 유저에게 랜덤하게 아이템을 지급할 때 한 유저의 아이템 장착이 다른 유저에게 영향을 준다면, spillover 가 발생하기 때문에 SUTVA 가정이 충족하지 못합니다. 이럴 때, 서버 단위의 실험을 생각해볼 수 있습니다 (홀수번째 서버는 아이템을 랜덤하게 지급하고 짝수번째 서버는 그렇지 않다는 등등). 이 때, 무작위 추출의 단위가 유저가 아니라 서버와 같은 그룹(클러스터) 단위이기 때문에, 표본의 크기도 달라집니다. [List et al. 2011](https://www.nber.org/papers/w15701) 논문의 섹션 4.2 Cluster Designs 에 추가적인 내용이 있어서 궁금하신 분들은 더 찾아보면 좋을 것 같네요. 
 
 ## 마무리하며
 
