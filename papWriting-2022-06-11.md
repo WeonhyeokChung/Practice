@@ -84,9 +84,9 @@ $$ = \int \Big( E[Y^1 - Y^0 | X ] \Big) d P(X) $$
 $$ = \int \Big( E [ Y | X, D=1] -  E [ Y | X, D=0]  \Big) d P(X) $$
 $$ = \Big[ E [Y | Age = 30, D= 1] - E [Y | Age = 30, D= 0]  \Big] \times P(Age = 30) $$
 $$ + \Big[ E [Y | Age = 50, D= 1] - E [Y | Age = 50, D= 0]  \Big] \times P(Age = 50) $$
-$$ = (5  - 1 \%) \times \frac{600+400}{2000} $$
-$$ + (12 \% - 10 \%) \times \frac{900+100}{2000} $$
-$$ = 3 \% $$
+$$ = (5  - 1 \\%) \times \frac{600+400}{2000} $$
+$$ + (12 \\% - 10 \%) \times \frac{900+100}{2000} $$
+$$ = 3 \\% $$
 
 
 ## 마무리하며
