@@ -8,7 +8,7 @@ tags: ["중급"]
 date: 2022-06-11
 ---
 
-\newcommand{\indep}{\perp \!\!\! \perp}
+\\newcommand{\\indep}{\perp \!\!\! \perp}
 
 ## 시작하며 
 
