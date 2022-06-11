@@ -8,7 +8,7 @@ tags: ["중급"]
 date: 2022-06-11
 ---
 
-\\newcommand{\\indep}{\perp \!\!\! \perp}
+\newcommand{\tuple}[1]{\langle #1 \rangle}
 
 ## 시작하며 
 
@@ -66,7 +66,7 @@ $$\frac{ 5\% \times 400 + 12\% \times 100 }{ 400 + 100} = 6.4\% $$
 흡연 여부가 사망률에 미치는 인과적 효과를 추정하기 위해서 아래 두 가정을 가정해봅니다.
 
 1. CIA (Conditional Independent Assumption)
-    - $(Y^1, \indep Y^0) $
+    - $(Y^1, \tuple{a,b,c} Y^0) $
 
 ## 마무리하며
 
