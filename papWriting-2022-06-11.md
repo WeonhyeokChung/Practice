@@ -87,6 +87,9 @@ $$ + \Big[ E [Y | Age = 50, D= 1] - E [Y | Age = 50, D= 0]  \Big] \times P(Age =
 $$ = (5  - 1 \\%) \times \frac{600+400}{2000} + (12 \\% - 10 \\%) \times \frac{900+100}{2000} $$
 $$ = 3 \\% $$
 
+위의 사례에서는 characteristic 이 연령 하나였습니다. 만약, characteristic 이 많아진다면 어떻게 될까요? 예를 들어, 10개의 binary (0 또는 1)의 변수가 있으면, 210 = 1, 024 개의 subclass 를 만들어야 합니다. 개별 subclass 에 각각 treatment 그룹과 control 그룹이 모두 있으리라 보장하기 어렵습니다.
+
+- 즉, Curse of dimensionality 문제가 발생합니다.
 
 ## 마무리하며
 
