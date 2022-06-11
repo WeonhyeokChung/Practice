@@ -71,13 +71,12 @@ $$\frac{ 5\% \times 400 + 12\% \times 100 }{ 400 + 100} = 6.4\% $$
     - $0 < P(D=1 | X) < 1$ with probability one.
 
 두 가정 하에서, 
-$
-		\begin{align}
-			E[Y^1 - Y^0 | X ] & = E [ Y | X, D=1] - E [ Y | X, D=0] \nonumber \\ 
-				& = E [ Y^1 | X, D = 1] - E [ Y^0 | X, D = 0]  \nonumber \\
-				& = E [ Y | X, D = 1] - E [ Y | X, D = 0]  \nonumber 
-		\end{align}
-$
+
+$$ E[Y^1 - Y^0 | X ] & = E [ Y | X, D=1] - E [ Y | X, D=0] $$
+$$  = E [ Y^1 | X, D = 1] - E [ Y^0 | X, D = 0] $$
+$$ = E [ Y | X, D = 1] - E [ Y | X, D = 0] $$
+		
+
 
 ## 마무리하며
 
