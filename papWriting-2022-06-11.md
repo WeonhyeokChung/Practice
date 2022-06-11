@@ -8,8 +8,8 @@ tags: ["중급"]
 date: 2022-06-11
 ---
 
-
-## 시작하며 
+## Subclassification
+### 예시: 흡연과 사망률
 
 아래 표에서는 흡연여부에 따른 사망률을 나타냅니다. 이 표를 보고 과연 흡연이 사망에 영향을 미치지 않는다고 주장할 수 있을까요? 
 
@@ -54,13 +54,13 @@ $$\frac{ 1 \\% \times 600 + 10 \\% \times 900 }{ 600 + 900} = 6.4 \\% $$
 - 흡연자의 사망률 단순 계산: 
 $$\frac{ 5 \\% \times 400 + 12 \\% \times 100 }{ 400 + 100} = 6.4 \\% $$
 
-## DAG 그래프
+### DAG 그래프
 
 사망률을 단순 계산할 경우 흡연자와 비흡연자의 사망률이 동일하게 나오는 이유는 아래 DAG 표와 같이 흡연 여부가 연령과 연관되기 때문입니다. 그리고, 위 표들과 같이, 흡연 여부에 따라서 연령 분포가 다르기 때문에 문제가 발생합니다.
 
 ![](./fig1_DAG.png)
 
-## Identifying Assumption
+### Identifying Assumption
 
 흡연 여부가 사망률에 미치는 인과적 효과를 추정하기 위해서 아래 두 가정을 가정해봅니다.
 
@@ -76,7 +76,7 @@ $$ E[Y^1 - Y^0 | X ] = E [ Y | X, D=1] - E [ Y | X, D=0] $$
 $$  = E [ Y^1 | X, D = 1] - E [ Y^0 | X, D = 0] $$
 $$ = E [ Y | X, D = 1] - E [ Y | X, D = 0] $$
 		
-## Calculating Average Treatment Effect
+### Calculating Average Treatment Effect
 
 위 예시에서 ATE 를 계산해봅니다. 
 
@@ -90,6 +90,16 @@ $$ = 3 \\% $$
 위의 사례에서는 characteristic 이 연령 하나였습니다. 만약, characteristic 이 많아진다면 어떻게 될까요? 예를 들어, 10개의 binary (0 또는 1)의 변수가 있으면, 210 = 1, 024 개의 subclass 를 만들어야 합니다. 개별 subclass 에 각각 treatment 그룹과 control 그룹이 모두 있으리라 보장하기 어렵습니다.
 
 - 즉, Curse of dimensionality 문제가 발생합니다.
+
+## Propensity Score Matching
+
+### Introduction
+
+PSM 기법은 curse of dimensionality 문제를 해소하고자 treatment 될 확률이라는 (벡터가 아 닌) 스칼라 값 하나로 표현하는 방법입니다. PSM 을 이용해 두 집단의 인과관계를 추론하는 스텝은 다음과 같습니다.
+
+### 예시: 직업훈련
+
+아래 표에서는 데이터 별 단순 이중차분 결과를 나타냅니다. Experimental 데이터는 실제 실험이 이루어진 데이터에 근거한 이중차분 결과로 참값입니다. 이와 달리, PSID 와 CPS 는 매칭없이 단순 이중차분을 하였습니다. Experimental 데이터와 달리, PSID 결과처럼 음수 가 나오거나, CPS 의 결과처럼 약간 양수여도 Experimental 결과값보다 작고, 통계적으로 유의하지 않습니다.
 
 ## 마무리하며
 
