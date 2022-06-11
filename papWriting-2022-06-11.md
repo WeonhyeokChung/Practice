@@ -65,7 +65,19 @@ $$\frac{ 5\% \times 400 + 12\% \times 100 }{ 400 + 100} = 6.4\% $$
 흡연 여부가 사망률에 미치는 인과적 효과를 추정하기 위해서 아래 두 가정을 가정해봅니다.
 
 1. CIA (Conditional Independent Assumption)
-    - $(Y^1, \perp Y^0) $
+    - $(Y^1, Y^0 \perp D | X) $
+
+2. Common Support Assumption
+    - $0 < P(D=1 | X) < 1$ with probability one.
+
+두 가정 하에서, 
+$
+		\begin{align}
+			E[Y^1 - Y^0 | X ] & = E [ Y | X, D=1] - E [ Y | X, D=0] \nonumber \\ 
+				& = E [ Y^1 | X, D = 1] - E [ Y^0 | X, D = 0]  \nonumber \\
+				& = E [ Y | X, D = 1] - E [ Y | X, D = 0]  \nonumber 
+		\end{align}
+$
 
 ## 마무리하며
 
