@@ -154,7 +154,9 @@ $$\delta_{ATT} = E [ Y^1 - Y^0 | D = 1]  = \frac{1}{P(D=1)} \times E \Big[ Y \ti
 
 ### PSM 매칭 전후 결과 비교
 
-|    |  (1) |   (2)     | 
+[ ] 직업훈련 관련 논문들에 대한 설명
+
+| Comparison Group   |       | Matching | 
 | Comparison Group   |       | Matching | 
 | ------ | ------ | ------ |
 | Experimental | $1,672 |  |
@@ -163,6 +165,10 @@ $$\delta_{ATT} = E [ Y^1 - Y^0 | D = 1]  = \frac{1}{P(D=1)} \times E \Big[ Y \ti
 |       | (851) | (800) |
 | CPS | $1,672 | $1,616 |
 |       | (550) | (751) |
+- Estimated Training Effects using Propensity Scores (1) 열의 결과는 characteristic 이 통제된 결과
+
+
+
 
 ## 마무리하며
 
