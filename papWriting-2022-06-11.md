@@ -134,14 +134,15 @@ Datta et al. (2017, Marketing Science) [1] 의 논문에서는 음악 유저들�
 
 아래 스포티파이의 예시를 보면, 매칭 전에는 (스포티파이 프로덕트) 경향성 점수 분포가 도입 집단과 비도입 집단 간에 차이를 보임을 알 수 있습니다. 매칭 이후에는 경향성 점수 분포가 두 집단 간에 거의 동일해집니다.
 
-![](./fig2_DAG-PSM.png)
+![](./spotifyFig2_DistributionPropensityScore.png)
 
 ### Weighting on the Propensity Score
 
 Propensity score 를 이용해서 ATE and ATT 를 추정할 수 있습니다.
 
-$$\delta_{ATE} & = E [ Y^1 - Y^0] = E \Big[ Y \times \frac{D - p(X)}{p(X) (1-p(X))}   \Big]  $$
+$$\delta_{ATE}  = E [ Y^1 - Y^0] = E \Big[ Y \times \frac{D - p(X)}{p(X) (1-p(X))}   \Big]  $$
 
+$$\delta_{ATT} = E [ Y^1 - Y^0 | D = 1]  = \frac{1}{P(D=1)} \times E \Big[ Y \times \frac{D - p(X)}{ 1 - p(X)} \Big]$$
 
 ## 마무리하며
 
