@@ -180,3 +180,4 @@ Propensity Score Matching 의 가장 큰 단점은 관측 불가능한 변수들
 
 - [Causal Mixtape, "Matching and Subclassification"](https://mixtape.scunning.com/matching-and-subclassification.html)
 - [Datta, H., G. Knox, and B. J. Bronnenberg. (2017). Changing their tune: How con- sumers’ adoption of online streaming affects music consumption and discovery, Marketing Science ."](https://pubsonline.informs.org/doi/abs/10.1287/mksc.2017.1051)
+- [Dehejia, Rajeev H., and Sadek Wahba. 1999. “Causal Effects in Nonexperimental Studies: Reevaluating the Evaluation of Training Programs.” Journal of the American Statistical Association 94 (448): 1053–62.](https://www.tandfonline.com/doi/abs/10.1080/01621459.1999.10473858)
