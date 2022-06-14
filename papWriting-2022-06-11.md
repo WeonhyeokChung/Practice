@@ -146,9 +146,11 @@ $$\delta_{ATT} = E [ Y^1 - Y^0 | D = 1]  = \frac{1}{P(D=1)} \times E \Big[ Y \ti
 
 ## 마무리하며
 
+Propensity Score Matching 의 가장 큰 단점은 관측 불가능한 변수들을 통제하지 못한다는 점입니다. 관측 불가능한 변수들을 통제하면, 정책과 outcome 이 독립이다라는 CIA (Conditional Independent Assumption) 에 기반하고 있습니다. 따라서, 실무에서 CIA 를 가정할 수 있는지에 대한 고민이 선행되어야 합니다. 
+
 위  글은 저의 [개인블로그](https://marvin-ds.tistory.com/15)에서도 읽으실 수 있습니다. 
 
 ## Reference
 
 - [Causal Mixtape, "Matching and Subclassification"](https://mixtape.scunning.com/matching-and-subclassification.html)
-- [Datta et al. (2017, Marketing Science), "Matching and Subclassification"](https://mixtape.scunning.com/matching-and-subclassification.html)
+- [Datta, H., G. Knox, and B. J. Bronnenberg. (2017). Changing their tune: How con- sumers’ adoption of online streaming affects music consumption and discovery, Marketing Science ."](https://pubsonline.informs.org/doi/abs/10.1287/mksc.2017.1051)
