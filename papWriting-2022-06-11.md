@@ -108,12 +108,25 @@ PSM 기법을 활용해 매칭을 해보겠습니다. 우선, 필요한 covairat
 1. 로짓 회귀식을 이용해 treatment 에 속할 conditional probability 를 구합니다.
     - $P(D=1 | X) = F(\beta_0 + \beta_1 Treat + \beta_2 X)$ where $F() = \frac{e}{1+e}$
 
-### PSM Theorem 의 가가정정
+### PSM Theorem 의 가정
 
 - CIA 가정 하에서, 
     - $E[Y_i^1 | D_i = 1 , X_i = x] = E[Y_i | D_i = 1, X_i = x]$
 
+- Common support assumption 가정 하에서, 위 두 식을 모두 구할 수 있습니다.
+    - Common support 가정 : $0 < P(D_i = 1 | X_i) < 1$. 
 
+- 두 가정 하에서 우리는 아래와 같은 PSM theorem 을 도출할 수 있습니다.
+    - CIA 가정에서, $(Y^1, Y^0) \indep D | X$
+    - 이로부터 $(Y^1, Y^0) \indep D | p(X)$ 를 도출할 수 있습니다. 
+
+CIA 가정 하에서 treatment 와 Y 간의 독립을 보장하기 위해서는 propensity score 로 conditioning 하는 것이 충분합니다.
+
+### DAG Graph for PSM
+
+Propensity score 를 통제할 때 (conditional on) treatment 그룹의 covariate 의 분포와 control 그룹의 covariate 의 분포가 동일해집니다.
+
+![](./fig2_DAG-PSM.png)
 
 ## 마무리하며
 
