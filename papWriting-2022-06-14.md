@@ -138,7 +138,7 @@ Propensity score 를 통제할 때 (conditional on) treatment 그룹의 covariat
 
 ### 예시: 스포티파이
 
-Datta et al. (2017, Marketing Science) [1] 의 논문에서는 음악 유저들과 여러 플랫폼 사용 여부에 대한 데이터를 바탕으로 추천 프로덕트인 스포티파이의 사용 여부가 음악 소비량이 나 다양한 음악 소비 여부에 미치는 영향을 연구합니다. 이 연구에서는 PSM + DID 방법을 사용합니다.
+Datta et al. (2017)의 논문에서는 음악 유저들과 여러 플랫폼 사용 여부에 대한 데이터를 바탕으로 추천 프로덕트인 스포티파이의 사용 여부가 음악 소비량이 나 다양한 음악 소비 여부에 미치는 영향을 연구합니다. 이 연구에서는 PSM + DID 방법을 사용합니다.
 
 아래 스포티파이의 예시를 보면, 매칭 전에는 (스포티파이 프로덕트) 경향성 점수 분포가 도입 집단과 비도입 집단 간에 차이를 보임을 알 수 있습니다. 매칭 이후에는 경향성 점수 분포가 두 집단 간에 거의 동일해집니다.
 
@@ -154,8 +154,7 @@ $$\delta_{ATT} = E [ Y^1 - Y^0 | D = 1]  = \frac{1}{P(D=1)} \times E \Big[ Y \ti
 
 ### PSM 매칭 전후 결과 비교
 
-[ ] 직업훈련 관련 논문들에 대한 설명
-
+미국에서 직업 훈련 프로그램의 효과에 관한 PSM 기법을 실험 기법과 비교한 논문들이 있습니다. 이 중에서 Dehejia and Wahba (1999)에서 두 방법론을 비교하는 논문이 있어 소개합니다. 
 
 |    | (1) | (2) | 
 | ------ | ------ | ------ |
@@ -166,10 +165,10 @@ $$\delta_{ATT} = E [ Y^1 - Y^0 | D = 1]  = \frac{1}{P(D=1)} \times E \Big[ Y \ti
 |       | (851) | (800) |
 | CPS | $1,672 | $1,616 |
 |       | (550) | (751) |
-- Estimated Training Effects using Propensity Scores (1) 열의 결과는 characteristic 이 통제된 결과
+- Estimated Training Effects using Propensity Scores (1) 열의 결과는 characteristic 이 통제된 결과.
+- Dehejia and Wahba (1999) 의 Table 3에서 발췌. 
 
-
-
+위 테이블에 따르면, PSID 와 CPS 데이터를 이용한 추정치는 실험 데이터를 이용한 추정 치에 비해 절반의 효과를 나타냅니다. 이러한 문제점은 matching 기법 이후에 해소되는 것으로 나타납니다. 
 
 ## 마무리하며
 
