@@ -156,8 +156,6 @@ $$\delta_{ATT} = E [ Y^1 - Y^0 | D = 1]  = \frac{1}{P(D=1)} \times E \Big[ Y \ti
 
 [ ] 직업훈련 관련 논문들에 대한 설명
 
-| ------ | ------ | ------ |
-| Comparison Group   |       | Matching | 
 | Comparison Group   |       | Matching | 
 | ------ | ------ | ------ |
 | Experimental | $1,672 |  |
