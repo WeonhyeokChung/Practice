@@ -97,9 +97,23 @@ $$ = 3 \\% $$
 
 PSM 기법은 curse of dimensionality 문제를 해소하고자 treatment 될 확률이라는 (벡터가 아 닌) 스칼라 값 하나로 표현하는 방법입니다. PSM 을 이용해 두 집단의 인과관계를 추론하는 스텝은 다음과 같습니다.
 
-### 예시: 직업훈련
+- 필요한 covariate 을 이용해서 treat 될 조건부 확률을 로짓이나 프로빗을 통해서 구합니다.
+- Predicted value 를 이용해서 covariate 들을 스칼라 값인 propensity score 로 압축합니다.
+- Treat 그룹과 control 그룹을 propensity score 를 바탕으로 비교합니다. Treatment 그룹의 샘플에서 유사한 propensity score 를 가진 control 그룹의 샘플과 매칭을 시켜줍니다.
 
-아래 표에서는 데이터 별 단순 이중차분 결과를 나타냅니다. Experimental 데이터는 실제 실험이 이루어진 데이터에 근거한 이중차분 결과로 참값입니다. 이와 달리, PSID 와 CPS 는 매칭없이 단순 이중차분을 하였습니다. Experimental 데이터와 달리, PSID 결과처럼 음수 가 나오거나, CPS 의 결과처럼 약간 양수여도 Experimental 결과값보다 작고, 통계적으로 유의하지 않습니다.
+### Fitted Value of Logistic Model
+
+PSM 기법을 활용해 매칭을 해보겠습니다. 우선, 필요한 covairate 을 이용해서 treatment 그룹에 속할 조건부 확률을 로짓을 이용해서 구합니다.
+
+1. 로짓 회귀식을 이용해 treatment 에 속할 conditional probability 를 구합니다.
+    - $P(D=1 | X) = F(\beta_0 + \beta_1 Treat + \beta_2 X)$ where $F() = \frac{e}{1+e}$
+
+### PSM Theorem 의 가가정정
+
+- CIA 가정 하에서, 
+    - $E[Y_i^1 | D_i = 1 , X_i = x] = E[Y_i | D_i = 1, X_i = x]$
+
+
 
 ## 마무리하며
 
