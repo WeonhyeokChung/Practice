@@ -117,8 +117,8 @@ PSM 기법을 활용해 매칭을 해보겠습니다. 우선, 필요한 covairat
     - Common support 가정 : $0 < P(D_i = 1 | X_i) < 1$. 
 
 - 두 가정 하에서 우리는 아래와 같은 PSM theorem 을 도출할 수 있습니다.
-    - CIA 가정에서, $(Y^1, Y^0) \indep D | X$
-    - 이로부터 $(Y^1, Y^0) \indep D | p(X)$ 를 도출할 수 있습니다. 
+    - CIA 가정에서, $(Y^1, Y^0) \perp D | X$
+    - 이로부터 $(Y^1, Y^0) \perp D | p(X)$ 를 도출할 수 있습니다. 
 
 CIA 가정 하에서 treatment 와 Y 간의 독립을 보장하기 위해서는 propensity score 로 conditioning 하는 것이 충분합니다.
 
