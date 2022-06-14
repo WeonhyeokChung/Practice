@@ -152,6 +152,18 @@ $$\delta_{ATE}  = E [ Y^1 - Y^0] = E \Big[ Y \times \frac{D - p(X)}{p(X) (1-p(X)
 
 $$\delta_{ATT} = E [ Y^1 - Y^0 | D = 1]  = \frac{1}{P(D=1)} \times E \Big[ Y \times \frac{D - p(X)}{ 1 - p(X)} \Big]$$
 
+### PSM 매칭 전후 결과 비교
+
+|    |  (1) |   (2)     | 
+| Comparison Group   |       | Matching | 
+| ------ | ------ | ------ |
+| Experimental | $1,672 |  |
+|       | (638) |       |
+| PSID | $731 | $1,473 |
+|       | (851) | (800) |
+| CPS | $1,672 | $1,616 |
+|       | (550) | (751) |
+
 ## 마무리하며
 
 Propensity Score Matching 의 가장 큰 단점은 관측 불가능한 변수들을 통제하지 못한다는 점입니다. 관측 불가능한 변수들을 통제하면, 정책과 outcome 이 독립이다라는 CIA (Conditional Independent Assumption) 에 기반하고 있습니다. 따라서, 실무에서 CIA 를 가정할 수 있는지에 대한 고민이 선행되어야 합니다. 
