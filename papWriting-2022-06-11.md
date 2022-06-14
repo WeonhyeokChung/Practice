@@ -128,6 +128,21 @@ Propensity score 를 통제할 때 (conditional on) treatment 그룹의 covariat
 
 ![](./fig2_DAG-PSM.png)
 
+### 예시: 스포티파이
+
+Datta et al. (2017, Marketing Science) [1] 의 논문에서는 음악 유저들과 여러 플랫폼 사용 여부에 대한 데이터를 바탕으로 추천 프로덕트인 스포티파이의 사용 여부가 음악 소비량이 나 다양한 음악 소비 여부에 미치는 영향을 연구합니다. 이 연구에서는 PSM + DID 방법을 사용합니다.
+
+아래 스포티파이의 예시를 보면, 매칭 전에는 (스포티파이 프로덕트) 경향성 점수 분포가 도입 집단과 비도입 집단 간에 차이를 보임을 알 수 있습니다. 매칭 이후에는 경향성 점수 분포가 두 집단 간에 거의 동일해집니다.
+
+![](./fig2_DAG-PSM.png)
+
+### Weighting on the Propensity Score
+
+Propensity score 를 이용해서 ATE and ATT 를 추정할 수 있습니다.
+
+$$\delta_{ATE} & = E [ Y^1 - Y^0] = E \Big[ Y \times \frac{D - p(X)}{p(X) (1-p(X))}   \Big]  $$
+
+
 ## 마무리하며
 
 위  글은 저의 [개인블로그](https://marvin-ds.tistory.com/15)에서도 읽으실 수 있습니다. 
@@ -135,3 +150,4 @@ Propensity score 를 통제할 때 (conditional on) treatment 그룹의 covariat
 ## Reference
 
 - [Causal Mixtape, "Matching and Subclassification"](https://mixtape.scunning.com/matching-and-subclassification.html)
+- [Datta et al. (2017, Marketing Science), "Matching and Subclassification"](https://mixtape.scunning.com/matching-and-subclassification.html)
