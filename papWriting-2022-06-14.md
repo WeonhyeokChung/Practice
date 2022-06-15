@@ -1,5 +1,5 @@
 ---
-title: 매칭 (Subclassification)
+title: 매칭 (Subclassification 과 PSM)
 slug: matching-subclassification
 category: Causal Inference
 author: "정원혁"
@@ -14,9 +14,12 @@ date: 2022-06-14
 
 PSM 은 성향점수 매칭 방법은 유저(또는 일반적으로 관측치)가 정책(프로덕트 런칭 등)의 treatment 그룹에 속할 확률을 기반으로 treatment 그룹과 control 그룹을 나누는 방법입니다. 예를 들어, 새로운 음악 추천 서비스의 음악 소비에 대한 효과를 추정하고 싶다고 한다면, 새로운 음악을 들을 확률이 유사한 유저들 중에서 추천 서비스를 들은 사람들과 듣지 않은 사람들을 한 그룹으로 묶고, 각 그룹의 음악 소비량의 차이를 가중평균하여 분석가가 추정하고 싶은 효과를 추정합니다. 
 
-PSM 은 이러한 매칭을 기반으로 하므로, subclassification 섹션에서는 매칭을 통해서 매칭 방법론의 직관을 이해하고, PSM 섹션에서는 보다 구체적으로 PSM 을 구하는 방법에 대해 논의하고, 마무리에서는 PSM 의 한계점에 대해서 논의해보도록 하겠습니다. 
+Subclassification 섹션에서는 매칭 방법론의 직관을 이해하고, PSM 섹션에서는 보다 구체적으로 PSM 을 구하는 방법에 대해 설명하고, 마무리에서는 PSM 의 한계점에 대해서 논의해보도록 하겠습니다. 
 
 ## Subclassification
+
+Subclassification 방법은 동일한 그룹의 사람들끼리 그룹을 지은 후에 각 그룹마다 treatment 에 속한 사람들의 평균과 control 에 속한 사람들의 평균의 차이를 구한 후에 이러한 차이들을 그룹의 비율만큼 가중평균을 하여 원하는 정책의 효과를 구합니다. 아래 예시에서 흡연이 사망률에 미치는 영향을 구하는 과정을 통해서 subclassification 에 대해서 이해해보도록 하겠습니다. 
+
 ### 예시: 흡연과 사망률
 
 아래 표에서는 흡연여부에 따른 사망률을 나타냅니다. 이 표를 보고 과연 흡연이 사망에 영향을 미치지 않는다고 주장할 수 있을까요? 
@@ -86,7 +89,7 @@ $$ = E [ Y | X, D = 1] - E [ Y | X, D = 0] $$
 		
 ### Calculating Average Treatment Effect
 
-위 예시에서 ATE 를 계산해봅니다. 
+위 예시에서 ATE 를 계산해봅니다. Subclassification 의 방법에서는 연령 세부그룹 별로 흡연이 사망에 미친 영향을 구한 후에, 각 연령이될 확률 (연령 집단의 비율) 을 가중평균해서 average treatment effect 를 구합니다.
 
 $$\hat{\delta}_{ATE}  = \int \Big( E[Y^1 - Y^0 | X ] \Big) d P(X) $$
 $$ = \int \Big( E [ Y | X, D=1] -  E [ Y | X, D=0]  \Big) d P(X) $$
@@ -94,6 +97,8 @@ $$ = \Big[ E [Y | Age = 30, D= 1] - E [Y | Age = 30, D= 0]  \Big] \times P(Age =
 $$ + \Big[ E [Y | Age = 50, D= 1] - E [Y | Age = 50, D= 0]  \Big] \times P(Age = 50) $$
 $$ = (5  - 1 \\%) \times \frac{600+400}{2000} + (12 \\% - 10 \\%) \times \frac{900+100}{2000} $$
 $$ = 3 \\% $$
+
+즉, 위 예시에서 흡연은 사망률을 약 3퍼센트 포인트 높이는 부정적인 영향을 줍니다. 
 
 위의 사례에서는 characteristic 이 연령 하나였습니다. 만약, characteristic 이 많아진다면 어떻게 될까요? 예를 들어, 10개의 binary (0 또는 1)의 변수가 있으면, 210 = 1, 024 개의 subclass 를 만들어야 합니다. 개별 subclass 에 각각 treatment 그룹과 control 그룹이 모두 있으리라 보장하기 어렵습니다.
 
@@ -105,9 +110,9 @@ $$ = 3 \\% $$
 
 PSM 기법은 curse of dimensionality 문제를 해소하고자 treatment 될 확률이라는 (벡터가 아 닌) 스칼라 값 하나로 표현하는 방법입니다. PSM 을 이용해 두 집단의 인과관계를 추론하는 스텝은 다음과 같습니다.
 
-- 필요한 covariate 을 이용해서 treat 될 조건부 확률을 로짓이나 프로빗을 통해서 구합니다.
-- Predicted value 를 이용해서 covariate 들을 스칼라 값인 propensity score 로 압축합니다.
-- Treat 그룹과 control 그룹을 propensity score 를 바탕으로 비교합니다. Treatment 그룹의 샘플에서 유사한 propensity score 를 가진 control 그룹의 샘플과 매칭을 시켜줍니다.
+1. 필요한 covariate 을 이용해서 treat 될 조건부 확률을 로짓이나 프로빗을 통해서 구합니다.
+2. Predicted value 를 이용해서 covariate 들을 스칼라 값인 propensity score 로 압축합니다.
+3. Treat 그룹과 control 그룹을 propensity score 를 바탕으로 비교합니다. Treatment 그룹의 샘플에서 유사한 propensity score 를 가진 control 그룹의 샘플과 매칭을 시켜줍니다.
 
 ### Fitted Value of Logistic Model
 
@@ -128,11 +133,11 @@ PSM 기법을 활용해 매칭을 해보겠습니다. 우선, 필요한 covairat
     - CIA 가정에서, $(Y^1, Y^0) \perp D | X$
     - 이로부터 $(Y^1, Y^0) \perp D | p(X)$ 를 도출할 수 있습니다. 
 
-CIA 가정 하에서 treatment 와 Y 간의 독립을 보장하기 위해서는 propensity score 로 conditioning 하는 것이 충분합니다.
+CIA 가정 하에서는 treatment 와 Y 간의 독립이 propensity score 로 conditioning 하는 것 만으로도 보장됩니다. 
 
 ### DAG Graph for PSM
 
-Propensity score 를 통제할 때 (conditional on) treatment 그룹의 covariate 의 분포와 control 그룹의 covariate 의 분포가 동일해집니다.
+Propensity score 를 통제할 때 treatment 그룹의 covariate 의 분포와 control 그룹의 covariate 의 분포가 동일해집니다.
 
 ![](./fig2_DAG-PSM.png)
 
@@ -140,7 +145,7 @@ Propensity score 를 통제할 때 (conditional on) treatment 그룹의 covariat
 
 Datta et al. (2017)의 논문에서는 음악 유저들과 여러 플랫폼 사용 여부에 대한 데이터를 바탕으로 추천 프로덕트인 스포티파이의 사용 여부가 음악 소비량이 나 다양한 음악 소비 여부에 미치는 영향을 연구합니다. 이 연구에서는 PSM + DID 방법을 사용합니다.
 
-아래 스포티파이의 예시를 보면, 매칭 전에는 (스포티파이 프로덕트) 경향성 점수 분포가 도입 집단과 비도입 집단 간에 차이를 보임을 알 수 있습니다. 매칭 이후에는 경향성 점수 분포가 두 집단 간에 거의 동일해집니다.
+아래 스포티파이의 예시의 그래프를 보면, 매칭 전에는 (스포티파이 프로덕트) 성향점수 분포가 도입 집단과 비도입 집단 간에 차이를 보임을 알 수 있습니다. 매칭 이후에는 경향성 점수 분포가 두 집단 간에 거의 동일해집니다.
 
 ![](./spotifyFig2_DistributionPropensityScore.png)
 
@@ -165,14 +170,16 @@ $$\delta_{ATT} = E [ Y^1 - Y^0 | D = 1]  = \frac{1}{P(D=1)} \times E \Big[ Y \ti
 |       | (851) | (800) |
 | CPS | $1,672 | $1,616 |
 |       | (550) | (751) |
-- Estimated Training Effects using Propensity Scores (1) 열의 결과는 characteristic 이 통제된 결과.
+
+- Estimated Training Effects using Propensity Scores 
+- (1) 열의 결과는 characteristic 이 통제된 결과.
 - Dehejia and Wahba (1999) 의 Table 3에서 발췌. 
 
 위 테이블에 따르면, PSID 와 CPS 데이터를 이용한 추정치는 실험 데이터를 이용한 추정 치에 비해 절반의 효과를 나타냅니다. 이러한 문제점은 matching 기법 이후에 해소되는 것으로 나타납니다. 
 
 ## 마무리하며
 
-Propensity Score Matching 의 가장 큰 단점은 관측 불가능한 변수들을 통제하지 못한다는 점입니다. 관측 불가능한 변수들을 통제하면, 정책과 outcome 이 독립이다라는 CIA (Conditional Independent Assumption) 에 기반하고 있습니다. 따라서, 실무에서 CIA 를 가정할 수 있는지에 대한 고민이 선행되어야 합니다. 
+Propensity Score Matching 의 가장 큰 단점은 관측 불가능한 변수들을 통제하지 못한다는 점입니다. 관측 가능한 변수들을 통제하면, 정책과 outcome 이 독립이다라는 CIA (Conditional Independent Assumption) 에 기반하고 있습니다. 하지만 관측불가능한 변수들, 예를 들면 위험에 대한 선호도나 개인의 인지능력 등이 프로덕트 도입 여부 (treatment)와 결과값 (outcome)에 모두 관련이 되어 treatment 의 효과가 bias 될 수 있습니다. 따라서, 실무에서 CIA 가 본인의 도메인에서 성립할 수 있는지에 대한 고민이 선행되어야 합니다. 
 
 위  글은 저의 [개인블로그](https://marvin-ds.tistory.com/24)에서도 읽으실 수 있습니다. 
 
