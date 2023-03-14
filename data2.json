@@ -5,11 +5,13 @@
     "content" : "Wine class",
     "price" : 13000
   },
+  {
     "id" : 4,
     "title" : "Speed Meeting",
     "content" : "Meeting four people 30 minutes for each (2 hours)",
     "price" : 45000
   },
+  {
     "id" : 5,
     "title" : "Exhibition",
     "content" : "Art exhibition, photo exhibition, etc.",
