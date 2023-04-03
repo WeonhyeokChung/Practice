@@ -114,9 +114,9 @@ FROM paperabtest.paperabtest;
 
 demW_* , demF_* , demWF_* 변수들도 같은 방식으로 구합니다. 
 - demWF_using_ab_only:
-  - 수식(5)의 $( ABTesting_{it} - \overline{ ABTesting_{i} } - \overline{ ABTesting_{t} } + \overline{ ABTesting } )$.
+  -수식(5)의$(ABTesting_{it} - \overline{ ABTesting_{i} } - \overline{ ABTesting_{t} } + \overline{ ABTesting })$.
 - demWF_log1p_stack2: 
-  - 수식(5)의 $( TechStack_{it} - \overline{ TechStack_{i} } - \overline{ TechStack_{t} } + \overline{TechStack}) $.  
+  -수식(5)의$(TechStack_{it} - \overline{ TechStack_{i} } - \overline{ TechStack_{t} } + \overline{TechStack}) $.  
 
 __2. SQL 추출 이후 파이썬__
 
