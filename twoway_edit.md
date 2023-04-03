@@ -106,17 +106,17 @@ FROM paperabtest.paperabtest;
 ```
 
 - demW_log1p_pageviews: 페이지뷰 로그 값의 각 주마다의 평균값입니다. 
-  - 수식 (5) 에서 $\overline{y_t}$ 와 대응. 
+  - 수식(5)의 $\overline{y_t}$ 와 대응. 
 - demF_log1p_pageviews: 페이지뷰 로그 값의 각 기업마다의 평균값입니다. 
-  - 수식 (5) 의 $\overline{y_i}$ 와 대응.  
+  - 수식(5)의 $\overline{y_i}$ 와 대응.  
 - demWF_log1p_pageviews: 페이지뷰 로그 값에서 페이지뷰 로그 값의 각 주마다의 평균값과 페이지뷰 로그 값에서 각 기업마다의 평균값을 뺀 후 페이지뷰 로그 값 전체를 더해준 값입니다. 
-  - 수식 (5) 의 $(y_{it} - \overline{y_i}  - \overline{y_t}  - \overline{y})$ 과 대응. 
+  - 수식(5)의 $(y_{it} - \overline{y_i}  - \overline{y_t}  - \overline{y})$ 과 대응. 
 
 demW_* , demF_* , demWF_* 변수들도 같은 방식으로 구합니다. 
 - demWF_using_ab_only:
-  - 수식 (5) 의 $( ABTesting_{it} - \overline{ ABTesting_{i} } - \overline{ ABTesting_{t} } + \overline{ ABTesting } )$ 에 대응.
+  - 수식(5)의 $( ABTesting_{it} - \overline{ ABTesting_{i} } - \overline{ ABTesting_{t} } + \overline{ ABTesting } )$.
 - demWF_log1p_stack2: 
-  - 수식 (5) 의 $( TechStack_{it} - \overline{ TechStack_{i} } - \overline{ TechStack_{t} } + \overline{TechStack}) $ 에 대응.  
+  - 수식(5)의 $( TechStack_{it} - \overline{ TechStack_{i} } - \overline{ TechStack_{t} } + \overline{TechStack}) $.  
 
 __2. SQL 추출 이후 파이썬__
 
